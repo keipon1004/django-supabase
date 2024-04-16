@@ -20,7 +20,7 @@ then you can start dev your app!
 - 
 
 ## docker+djangoのベストプラクティス
-もちろんdockerを使っていないので、ホストマシンのpipを使った開発は行わなくてすむようにしています。
+もちろんdockerを使ってるので、ホストマシンのpipを使った開発は行わなくてすむようにしています。
 なので基本的な方針としてコンテナ内のpip環境を使いましょう。
 make build時にはrequirements.txtをpip installしています。
 git pullしてきた時はmake down と make upをするようにしましょう。make up 時にコンテナ内でpython manage.py migrateを行い、
