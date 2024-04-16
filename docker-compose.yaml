@@ -3,23 +3,11 @@ version: '3.8'
 services:
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
       - "8000:8000"
-    depends_on:
-      - db  # 依存関係にSupabaseのサービス名を記載
-
-  db:
-    image: supabase/postgres
-    restart: always
-    environment:
-      POSTGRES_DB: your_database_name
-      POSTGRES_USER: your_username
-      POSTGRES_PASSWORD: your_password
-    ports:
-      - "5432:5432"
 
 volumes:
   postgres_data:
